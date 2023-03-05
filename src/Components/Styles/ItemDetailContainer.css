@@ -1,0 +1,20 @@
+.detail-container {
+    display: inline-block;
+    border: 5px solid blueviolet;
+    margin-bottom: 10%;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 blueviolet;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.detail-container:hover {
+    box-shadow: 0 0 20px 0 blueviolet, 0 0 40px 0 blueviolet, 0 0 80px 0 blueviolet;
+}
+
+.img-container img{
+    width: 50%;
+    height: 50%;
+}

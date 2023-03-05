@@ -1,0 +1,77 @@
+.header {
+  height: 300px;
+ 
+}
+
+.img1 {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .logo {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .navi {
+    font-weight: bolder;
+    font-size: 150%;
+    height: 100px;
+    width: 100%;
+    margin-top: 50px;
+    
+
+
+  }
+
+  .nav-bar {
+    text-align: center;
+    font-size: 30px;
+   
+  }
+
+  .carousel {
+    margin-bottom: 20%;
+    margin-top: -80px;
+  }
+
+  .carrousel-img {
+    object-fit: cover;
+    height: 600px;
+}
+
+.carrousel-text {
+    display: inline-block;
+    color: black;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 70px #0ff, 0 0 80px #0ff, 0 0 100px #0ff;
+    font-size: 25px;
+    font-weight: bolder;
+    
+}
+
+.navegacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: auto;
+    
+}
+.navegacion a{
+    margin: 50px;
+    background-color: black;
+    padding: 25px;
+    border-radius: 60%;
+    
+
+}
+
+.claseActive{
+    color: black;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 70px #0ff, 0 0 80px #0ff, 0 0 100px #0ff;
+    font-size: 50px;
+    color: white;
+}
+.claseInactive{
+    color: blue;
+}
