@@ -6,31 +6,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Logo from '../imgs/logo.jpg';
 import CartWidget from './CartWidget';
 import { useEffect, useState } from "react";
-import { productsArray } from './DataBase';
 import { ItemList } from './ItemList';
 import { useParams } from 'react-router-dom';
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 
 export const ItemListContainer = () => {
-    const {productType} = useParams();
+    const {categoryId} = useParams();
 
     const [products, setProducts] = useState([]);
 
-    let promise = new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            resolve(productsArray);
-        }, 0);
-    })
 
     useEffect(()=>{
-        promise.then(resultado=>{
-            if(!productType){
-                setProducts(resultado)
-            } else{
-                const nuevaLista = resultado.filter(item=>item.category === productType);
-                setProducts(nuevaLista)
-            }
-        })
-    },[productType]);
+       const querydb = getFirestore();
+       const queryCollection = collection(querydb, "GameZone");
+      
+        if (categoryId) {
+          const queryFilter = query(queryCollection, where('category', '==', categoryId))
+          getDocs(queryFilter)
+           .then(res => setProducts(res.docs.map(product => ({id: product.id, ...product.products()}))))
+        } else {
+          getDocs(queryCollection)
+           .then(res => setProducts(res.docs.map(product => ({id: product.id, ...product.products()}))))
+        } 
+    },[categoryId]);
 
     return(
         <>
@@ -62,7 +60,7 @@ export const ItemListContainer = () => {
     <div className="item-list-container">
             <p>{ItemList.productId}</p>
             <h2></h2>
-            <ItemList items={products}/>
+            <ItemList products={products}/>
         </div>
 
     <div>
