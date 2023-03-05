@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import {db} from "../FirebaseConfig/fireBase";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -10,7 +9,7 @@ export const Item = ({item})=>{
         <div className='row categories-container'>
         <Card className='categories-card' style={{ width: '18rem' }}>
         <h2 className='card-title'>{item.title}</h2>
-          <Card.Img className='categories-img' variant="top" src={item.pictureURL} alt={item.title} />
+          <Card.Img className='categories-img' variant="top" src={item.picture} alt={item.title} />
           <p>$ {item.price}</p>
           {/* <Counter/> */}
           <Card.Body>

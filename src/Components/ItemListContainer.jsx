@@ -9,32 +9,28 @@ import { useEffect, useState } from "react";
 import { productsArray } from './DataBase';
 import { ItemList } from './ItemList';
 import { useParams } from 'react-router-dom';
-import {db} from "../FirebaseConfig/fireBase";
-import { collection, getDocs, doc} from "@firebase/firestore";
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-import { getFirestore } from '../FirebaseConfig/fireBase'
-
-
 
 export const ItemListContainer = () => {
-    const [items, setItems] = useState([]);
-    const db = getFirestore();
-  
-    useEffect(() => {
-      const itemsCollection = db.collection('items');
-      itemsCollection.get().then((querySnapshot) => {
-        if (querySnapshot.size === 0) {
-          console.log('No items found');
-        } else {
-          const fetchedItems = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
-          setItems(fetchedItems);
-        }
-      });
-    }, [db]);
+    const {productType} = useParams();
+
+    const [products, setProducts] = useState([]);
+
+    let promise = new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve(productsArray);
+        }, 0);
+    })
+
+    useEffect(()=>{
+        promise.then(resultado=>{
+            if(!productType){
+                setProducts(resultado)
+            } else{
+                const nuevaLista = resultado.filter(item=>item.category === productType);
+                setProducts(nuevaLista)
+            }
+        })
+    },[productType]);
 
     return(
         <>
@@ -64,8 +60,9 @@ export const ItemListContainer = () => {
     </header>
 
     <div className="item-list-container">
-    <h2>ItemListContainer</h2>
-      <ItemList items={items} />
+            <p>{ItemList.productId}</p>
+            <h2></h2>
+            <ItemList items={products}/>
         </div>
 
     <div>
@@ -76,4 +73,3 @@ export const ItemListContainer = () => {
 )
 }
 
-export default ItemListContainer;

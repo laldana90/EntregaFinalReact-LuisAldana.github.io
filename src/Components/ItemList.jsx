@@ -1,33 +1,18 @@
-import React, { useState, useEffect } from 'react';
 import { Item } from "./Item"
-import { db } from '../FirebaseConfig/fireBase';
 //import { Link } from "react-router-dom";
 
-export const ItemList = ({category}) => {
-    const [items, setItems] = useState([]);
-  
-    useEffect(() => {
-      let query = db.collection('items');
-      if (category) {
-        query = query.where('category', '==', category);
-      }
-      const unsubscribe = query.onSnapshot(snapshot => {
-        const newItems = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-  
-        setItems(newItems);
-      });
-  
-      return () => unsubscribe();
-    }, [category]);
-  
-    return (
-      <div>
-        {items.map(item => (
-          <Item key={item.id} item={item} />
-        ))}
-      </div>
-    );
-  };
+export const ItemList = ({items})=>{
+
+    return(
+        <div className="styles-listed">
+            <div style={{width:"100%"}}></div>
+            {
+                items.map(product=>(
+                    //<Link key={producto.id} to={`/item/${producto.id}`}>
+                        <Item key={product.id} item={product}/>
+                    //</Link>
+                ))
+            }
+        </div>
+    )
+}
