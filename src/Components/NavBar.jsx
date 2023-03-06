@@ -62,7 +62,7 @@ export function NavBar() {
         />
         <Carousel.Caption className='carrousel-text'>
           <h3><strong>Sony - PS5</strong></h3>
-          <p>No lo lamentes, solo mejoralo...</p>
+          <p>No lo lamentes, solo mejora...</p>
         </Carousel.Caption>
       </Carousel.Item>
 

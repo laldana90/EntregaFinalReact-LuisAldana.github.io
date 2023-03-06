@@ -18,10 +18,10 @@ function App() {
     <div className="App">
      
         <div>
-        
+        <NavBar/>
         <Routes>
-          <Route path='/' element={<NavBar/>}/>
-          <Route path="/products/:productType" element={<ItemListContainer/>}/>
+          <Route path='/' element={<ItemListContainer/>}/>
+          <Route path="/products/:categoryId" element={<ItemListContainer/>}/>
           <Route path="/item/:productId" element={<ItemDetailContainer/>}/>
         </Routes>
         </div>

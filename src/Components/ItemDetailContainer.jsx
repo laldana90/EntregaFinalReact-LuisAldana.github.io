@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { productsArray } from "./DataBase";
+
 import { ItemDetail } from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../FirebaseConfig/fireBase";
 
 export const ItemDetailContainer = ()=>{
     const {productId} = useParams();
@@ -11,10 +12,10 @@ export const ItemDetailContainer = ()=>{
 
 
     useEffect(()=>{
-        const querydb = getFirestore();
-        const queryDoc = doc(querydb, "GameZone", "1");
+  
+        const queryDoc = doc(db, "GameZone", productId);
         getDoc(queryDoc)
-        .then(res => setItem( {id: res.id, ...res.item()}))
+        .then(res => setItem( {id: res.id, ...res.data()}))
     },[])
 
     return(
