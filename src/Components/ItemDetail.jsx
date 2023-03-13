@@ -1,42 +1,41 @@
-import React from 'react';
-import { NavLink, Link } from "react-router-dom";
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import { useCartContext } from '../Context/CartContext';
+
 import "bootstrap/dist/css/bootstrap.min.css";
-import Logo from '../imgs/logo.jpg';
-import CartWidget from './CartWidget';
 
 
 
+export const Counter = () => {
+
+    
+    const[count, setCount] = useState(0)
+
+    return (
+        <>
+        <p className="counter">Quantity: {count}</p>
+        
+        <div className="counter-buttons">
+        <button className="button-add" onClick={()=> setCount(count-1)}>-</button>
+        <button className="button-remove" onClick={()=> setCount(count+1)}>+</button>
+        </div>
+        </>
+    )
+}
 
 export const ItemDetail = ({item})=>{
+    const [goToCart, setGoToCart] = useState(false);
+    const {addProduct} = useCartContext();
+
+    const onAdd = (quantity) => {
+        setGoToCart(true);
+        addProduct(item, quantity);
+    }
    
     return(
 
         <>
-    <header className='header'>
-    <Navbar className="navi" bg="light" expand="lg">
-      <Container>
-      <Link to={'/'}><img className="logo" src={Logo} alt=""/></Link>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-        <div className='navegacion'>
-                <NavLink className={({isActive})=>isActive ? "claseActive": "claseInactive"}
-                 to="/">Inicio</NavLink>
-                <NavLink className={({isActive})=>isActive ? "claseActive": "claseInactive"}
-                 to={`/products/${item.category}`}>PS5</NavLink>
-                <NavLink className={({isActive})=>isActive ? "claseActive": "claseInactive"}
-                 to={`/products/${item.category}`}>XBOX</NavLink>
-                <NavLink className={({isActive})=>isActive ? "claseActive": "claseInactive"}
-                 to={`/products/${item.category}`}>Nintendo</NavLink>
-            </div>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-    <div>
-      <CartWidget/>
-    </div>
-    </header>
+   
 
         
         <div className='detail-container'>
@@ -47,13 +46,16 @@ export const ItemDetail = ({item})=>{
             <div className='img-container'>
                 <h3>{item.title}</h3>
                 <h4>$ {item.price}</h4>
+                <p>{item.description}</p>
             </div>
+            <Counter/>
            
             {
                
-                <Link to="/">
-                    <button>Ir al carrito(En Progreso)</button>
+                <Link to="/cart">
+                    <button onClick={goToCart} className='add-to-cart'>Go to Cart</button>
                 </Link>
+               
             }
         </div>
 

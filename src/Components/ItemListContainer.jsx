@@ -1,15 +1,12 @@
 import React from 'react';
-import { NavLink, Link } from "react-router-dom";
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Logo from '../imgs/logo.jpg';
-import CartWidget from './CartWidget';
 import { useEffect, useState } from "react";
 import { ItemList } from './ItemList';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../FirebaseConfig/fireBase';
+import CarouselComponent from './Carousel';
 
 export const ItemListContainer = () => {
   const {categoryId} = useParams();
@@ -38,9 +35,8 @@ export const ItemListContainer = () => {
 
 
 
-    <div className="item-list-container">
-            <p>{ItemList.productId}</p>
-            <h2></h2>
+<div className="item-list-container">
+         {!categoryId && <CarouselComponent/>}
             <ItemList items={products}/>
         </div>
 
