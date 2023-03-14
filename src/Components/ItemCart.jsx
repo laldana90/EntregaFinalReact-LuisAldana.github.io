@@ -13,11 +13,11 @@ const ItemCart = ({item}) => {
             <img src={item.pictureURL} alt={item.title}/>
         
         
-                <h3>{item.title}</h3>
-                <h4>$ {item.price}</h4>
-                <p>{item.quantity}</p>
-                <p>Subtotal: ${item.quantity * item.price}</p>
-                <button onClick={() => removeProduct(item.id)}>Delete</button>
+                <p className="cart-title">{item.title}</p>
+                
+                <p className="cart-quantity">Quantity{item.quantity}</p>
+                <p className="cart-subtotal">Subtotal: ${item.quantity * item.price}</p>
+                <button className="cart-delete" onClick={() => removeProduct(item.id)}>Delete</button>
             </div>
             </>
     )

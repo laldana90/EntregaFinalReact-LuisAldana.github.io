@@ -20,9 +20,10 @@ const Cart = () => {
             {
                 cart.map(item => <ItemCart key={item.id} item={item} />)
             }
-            <p>
+            <p className="cart-total">
                 Total: ${totalPrice()}  
             </p>
+            <Link className="continue-shopping" to='/'>Continue Shopping</Link>
         </>
     )
 }
