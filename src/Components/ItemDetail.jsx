@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
-export const Counter = () => {
+export const Counter = ({onAdd, stock}) => {
 
     
     const[count, setCount] = useState(0)
@@ -16,14 +16,16 @@ export const Counter = () => {
         <p className="counter">Quantity: {count}</p>
         
         <div className="counter-buttons">
-        <button className="button-add" onClick={()=> setCount(count-1)}>-</button>
-        <button className="button-remove" onClick={()=> setCount(count+1)}>+</button>
+        <button className="button-add" disabled={count === 0} onClick={()=> setCount(count-1)}>-</button>
+        <button className="button-remove" disabled = {count === stock} onClick={()=> setCount(count+1)}>+</button>
         </div>
+        <button disabled = {count === 0 }onClick={()=>onAdd(count)}>Comprar</button>
         </>
     )
 }
 
 export const ItemDetail = ({item})=>{
+   
     const [goToCart, setGoToCart] = useState(false);
     const {addProduct} = useCartContext();
 
@@ -35,9 +37,6 @@ export const ItemDetail = ({item})=>{
     return(
 
         <>
-   
-
-        
         <div className='detail-container'>
             <h2 style={{width: "100%"}}>{item.title}</h2>
             <div className='img-container'>
@@ -48,12 +47,12 @@ export const ItemDetail = ({item})=>{
                 <h4>$ {item.price}</h4>
                 <p>{item.description}</p>
             </div>
-            <Counter/>
            
-            {
+            { !goToCart ?
+                <Counter onAdd={onAdd} stock={item.stock}/>
                
-                <Link to="/cart">
-                    <button onClick={goToCart} className='add-to-cart'>Go to Cart</button>
+               : <Link to="/cart">
+                    <button  className='add-to-cart'>Go to Cart</button>
                 </Link>
                
             }
