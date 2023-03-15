@@ -29,6 +29,7 @@ const Cart = () => {
     
     return (
         <>
+        <h1 className="your-cart-title">Your Cart</h1>
             {
                 cart.map(item => <ItemCart key={item.id} item={item} />)
             }

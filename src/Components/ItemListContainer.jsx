@@ -41,7 +41,7 @@ export const ItemListContainer = () => {
         </div>
 
     <div>
-    <Link to={'/'} className="back-btn btn-dark">Volver a Inicio</Link>
+    <Link to={'/'} className="back-btn btn-dark">Back to Home</Link>
     </div>
 
     </>

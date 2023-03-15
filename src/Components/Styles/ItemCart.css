@@ -79,3 +79,13 @@
     margin-top: 50px;
     margin-bottom: 1050px;
 }
+
+.your-cart-title {
+    font-size: 50px;
+    background-color: black;
+    height: 80px;
+    color: blueviolet;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 70px #0ff, 0 0 80px #0ff, 0 0 100px #0ff;
+    font-weight: bolder;
+    margin-bottom: 100px;
+}
