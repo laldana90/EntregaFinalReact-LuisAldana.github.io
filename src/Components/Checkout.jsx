@@ -90,11 +90,11 @@ const Checkout = () => {
                             required
                         />
                         <br /><br />
-                        <button
+                        <input
                             type="submit"
                             value="Complete Order"
                             className="complete-order-btn"
-                        >Complete Order</button>
+                        />
                     </form>
                 </div>)
             }
@@ -105,7 +105,7 @@ const Checkout = () => {
                     <div>
                         <h4 className='success-order'>Your order has been placed successfully!</h4>
                         <h4>{`Your order number is: ${orderID}`}</h4>
-                        <Link className='continue-shopping' to="/"><h5>Continue Shopping</h5></Link>
+                        <Link className='continue-shopping-checkout' to="/"><h5>Continue Shopping</h5></Link>
                     </div>
                     )
             }

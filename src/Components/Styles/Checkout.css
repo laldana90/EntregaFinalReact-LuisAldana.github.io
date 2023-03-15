@@ -41,3 +41,14 @@ input:focus {
     margin-top: 50px;
     margin-bottom: 300px;
 }
+
+.continue-shopping-checkout {
+    color: blueviolet;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 30px;
+    bottom: 50px;
+    padding: 5px;
+    margin-top: 50px;
+    margin-bottom: 300px;
+}
