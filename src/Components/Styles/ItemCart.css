@@ -14,21 +14,26 @@
 .cart-title {
     display: flex;
     margin: 1rem;
+    font-weight: bold;
 }
 
 .cart-quantity {
     display: flex;
     margin: 1rem;
+    font-weight: bold;
 }
 
 .cart-subtotal {
     display: flex;
     margin: 1rem;
+    font-weight: bold;
 }
 
 .cart-delete {
     height: 35px;
     margin: 1rem;
+    background-color: yellow;
+    font-weight: bold;
 }
 
 .cart-total {
