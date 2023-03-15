@@ -15,6 +15,7 @@ import './Components/Styles/Categories.css';
 import './Components/Styles/ItemDetailContainer.css';
 import './Components/Styles/ItemCart.css';
 import './Components/Styles/Spinner.css';
+import './Components/Styles/Checkout.css';
 
 
 export const CartContext = React.createContext('');

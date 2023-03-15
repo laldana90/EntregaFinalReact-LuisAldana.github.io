@@ -1,4 +1,4 @@
-import {useState,useContext } from 'react';
+import { useState } from 'react';
 import { collection, addDoc} from "firebase/firestore";
 import { Link } from 'react-router-dom';
 import {db} from '.././FirebaseConfig/fireBase';
@@ -7,7 +7,7 @@ import Spinner from './Spinner';
 
 const Checkout = () => {
 
-    const {cart,getTotal,clear}= useContext(useCartContext)
+    const {cart, totalPrice, clearCart}= useCartContext(useCartContext)
 
     const [load, setLoad] = useState(false)
     const [orderID, setOrderID] = useState()
@@ -33,7 +33,7 @@ const Checkout = () => {
             const col = collection(db,"Orders")
             const order = await addDoc(col,data) 
             setOrderID(order.id)
-            clear()
+            clearCart()
             setLoad(false)
         } catch (error) {
             console.log(error)
@@ -44,7 +44,7 @@ const Checkout = () => {
         e.preventDefault()
         const day = new Date()
         const items = cart.map(e=> {return {id:e.id,title:e.name,price:e.price,amount:e.amount}})        
-        const total = getTotal()
+        const total = totalPrice()
         const data = {buyer,items,day,total}
         console.log("data",data)  
         generateOrder(data)
@@ -55,12 +55,12 @@ const Checkout = () => {
 
     return (
         <>
-            <h1>Finalizando Compra</h1>
+            <h1 className='complete-title'>Completing your order</h1>
             <hr />
             
             {load ? <Spinner />
                 : (!orderID&&<div>
-                    <h4>Completar Datos:</h4>
+                    <h4>Please, fill out the fields below:</h4>
                     <br />
                     <form onSubmit={handleSubmit}>
                         <input
@@ -90,11 +90,11 @@ const Checkout = () => {
                             required
                         />
                         <br /><br />
-                        <input
+                        <button
                             type="submit"
                             value="Complete Order"
-                            className="btn btn-success"
-                        />
+                            className="complete-order-btn"
+                        >Complete Order</button>
                     </form>
                 </div>)
             }
@@ -103,9 +103,9 @@ const Checkout = () => {
             {
                 orderID&&(
                     <div>
-                        <h4>Your order has been placed successfully!</h4>
+                        <h4 className='success-order'>Your order has been placed successfully!</h4>
                         <h4>{`Your order number is: ${orderID}`}</h4>
-                        <Link to="/"><h5>Continue Shopping</h5></Link>
+                        <Link className='continue-shopping' to="/"><h5>Continue Shopping</h5></Link>
                     </div>
                     )
             }

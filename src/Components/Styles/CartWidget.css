@@ -9,7 +9,15 @@
     margin-right: -90%;
     text-align: right;
     border: 3px solid black;
-    width: 60px;
+    width: 100px;
     padding: 10px;
     background-color: blueviolet;
+    color: black;
+  }
+
+  .qty-display {
+    font-size: 30px;
+    text-align: center;
+    color: black;
+    margin-left: 20px;
   }

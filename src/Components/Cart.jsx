@@ -37,8 +37,8 @@ const Cart = () => {
             </p>
             <button className="clear-cart" onClick={handleClearCart}>Clear Cart</button>
 
-            <Link className="complete-order" to="/checkout" onClick={handleCompleteOrder}>
-        Complete Order
+            <Link className="place-order" to="/checkout" onClick={handleCompleteOrder}>
+        Place Order
       </Link>
 
             <Link className="continue-shopping" to='/'>Continue Shopping</Link>
