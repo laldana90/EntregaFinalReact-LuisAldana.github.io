@@ -19,7 +19,7 @@ export const Counter = ({onAdd, stock}) => {
         <button className="button-add" disabled={count === 0} onClick={()=> setCount(count-1)}>-</button>
         <button className="button-remove" disabled = {count === stock} onClick={()=> setCount(count+1)}>+</button>
         </div>
-        <button disabled = {count === 0 }onClick={()=>onAdd(count)}>Comprar</button>
+        <button className='buy-btn' disabled = {count === 0 }onClick={()=>onAdd(count)}>Buy</button>
         </>
     )
 }

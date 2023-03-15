@@ -58,3 +58,19 @@
     width: 150px;
     height: 75px;
 }
+
+.buy-btn {
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: bolder;
+    margin: 15px;
+}
+
+.buy-btn:hover {
+    background-color: blueviolet;
+    color: white;
+    font-size: 20px;
+    width: 150px;
+    height: 75px;
+}

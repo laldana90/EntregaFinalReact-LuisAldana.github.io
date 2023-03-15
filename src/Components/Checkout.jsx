@@ -43,7 +43,7 @@ const Checkout = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const day = new Date()
-        const items = cart.map(e=> {return {id:e.id,title:e.title,price:e.price,amount:e.quantity}})       
+        const items = cart.map(e=> {return {id:e.id,title:e.title,price:e.price,quantity:e.quantity}})       
         const total = totalPrice()
         const data = {buyer,items,day,total}
         console.log("data",data)  
