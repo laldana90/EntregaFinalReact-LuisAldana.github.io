@@ -4,7 +4,11 @@ import { useCartContext } from "../Context/CartContext";
 import ItemCart from "./ItemCart";
 
 const Cart = () => {
-    const { cart, totalPrice } = useCartContext();
+    const { cart, totalPrice, clearCart } = useCartContext();
+
+    const handleClearCart = () => {
+        clearCart();
+    }
 
     if (cart.length === 0)     {
         return (
@@ -23,6 +27,8 @@ const Cart = () => {
             <p className="cart-total">
                 Total: ${totalPrice()}  
             </p>
+            <button className="clear-cart" onClick={handleClearCart}>Clear Cart</button>
+            
             <Link className="continue-shopping" to='/'>Continue Shopping</Link>
         </>
     )

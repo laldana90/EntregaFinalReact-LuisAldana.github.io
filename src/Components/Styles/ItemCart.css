@@ -48,3 +48,16 @@
     margin-top: 50px;
     margin-bottom: 1050px;
 }
+
+.clear-cart {
+    background-color: aquamarine;
+    color: black;
+    border: 3px solid black;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 30px;
+    bottom: 50px;
+    padding: 5px;
+    margin-top: 50px;
+    margin-bottom: 1050px;
+}
